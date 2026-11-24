@@ -1,0 +1,22 @@
+{
+  "name": "black-cafe",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend/customer",
+    "frontend/admin"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,cust,admin -c blue,green,yellow \"npm run dev -w backend\" \"npm run dev -w frontend/customer\" \"npm run dev -w frontend/admin\"",
+    "build": "npm run build -w frontend/customer && npm run build -w frontend/admin",
+    "test": "npm test -w backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1",
+    "jspdf": "^4.2.1"
+  }
+}
